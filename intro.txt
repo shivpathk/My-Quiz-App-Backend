@@ -1,0 +1,144 @@
+1. yarn 
+2. express
+3. typescript
+4. What is REST API , How ,Why ?
+
+//end point
+
+mydomain/user/
+--get: give users details
+
+mydomain/user/<userID>
+--get: give particular user details
+
+mydomain/user/
+--post: req.data -> create user
+
+mydomain/user
+--patch : req.body -> update user details
+
+mydomain/user/<userID>
+--delete : delete the user
+
+-MongoDB
+--- aggregate
+--- insert
+- moongoose (ODM)
+
+-- NodeJS - >> MongoDB : connectionString 
+
+//schema 
+--> architecture ->  name , email , password
+
+//model 
+name: User : users
+
+
+//response -> interface 
+-- format fix 
+- postman collection and saving examples
+- different routes for user module
+- dynamic parameter values
+- difference betweeen req.body & req.param & req.query
+- projection lga skte hai , ki kya-kya chahiye 
+
+
+// regular build issue (bar bar hme pehle yarn build krna pdta hai tb jake code run krte hai )
+- yarn add --dev ts-node
+ab ts-node jo hai vo node ki tarah kaam krega isko hm jo file denge usko traspile krke fir run kr dega 
+yarn ts-node ./src/app.ts
+
+we can also use nodemon for ts files ,but prerequist is to install ts-node first 
+nodemon ./src/app.ts
+
+also we know how to set enviromental variable with the help of nodemon
+
+abhi nodemon bahut bda area watch kr rha hai , to hm iske search dayre ko chhota kr denge nodemon.json me jake
+
+ab jo exrcute ka command package.json me likhe hai vo nodemon.json me likh skte hai 
+
+add extention in nodemon 
+add folder watch 
+add exec , what command execute
+
+
+password encruption:
+user se jo password lete hai hm , to use database me ese store nhi kr skte jise koi bhi easily pdhle use encrupt krke rkhenge , password encruption ke bahut se method ho skte hai 
+
+-> base64 : isko kaise use krte hai hm dekh skte hai , lekin ab hm ise use nhi krte hai kyoki ye itna jyada famous ho gya hai aur isko decode krna bhi kafi aasan hai , hm esa encruption krenge jisse coder ko bhi pta na ho ki kaise decode krna hai 
+
+-> bcryptjs : ye ek js ka library hai jo ki password encrupt ke liye use hota hai aur isko decrypt nhi kiya ja skta hai 
+
+ab chuki ye esa password bna dega jisko koi nhi dekh skta hai to kaise compare krenge , verification kaise krenge password , to uske liye bcryptjs ke pas khud ka function hota hai 
+
+
+//add web token : isme kya hai ki hamare NodeJS ko kaise pta chlega ki koi user jo log in hai usi ka , server ko kuch nhi pta ki user log in hai ki nhi, websites me kya hota hai, jb koi user login krke krta hai to website ek setion create kr deta hai aur server smjh jata hai ki ye request isi user se aa rhi hai 
+Hamara REST API stateless hai yani ye setion maintain krke nhi rkhta , isilliye hm use krte hai jwt web token , jb bhi request aayegi usme ye jwt hoga aur vo agle 1 ghante tk rhega 
+
+authentication and authorization 
+authentication = useremail aur password same hai ki nhi 
+authorization = kya kya kr skte ho , user-role
+
+ex:maine apna username aur password dala to to log in huva ye authentication huva , ab mai apne user ko delete update kr skta hu , dusre ka nhi ye sb ho gya authorization
+
+
+ab hm un routes ko alag kr denge jinme auth.. ki jarurat hai 
+
+break code -> divided user and auth routes 
+
+//middleware : vo sare functions jo request ko response ko access kr rhe hote hai vo sb middleware hote hai 
+
+// middleware add in .post() and .get() methods before forwarding requests to controller 
+- mmiddleware - routes -> middleware >> controller
+- middleware ->> authentication :: jwt 
+
+//next() 
+middleware me jo next() function hota hai vo kya krta hai ki bydefault hamara server ek middleware me hai to vo bahar nhi jaega lekin jaise hi hm next() ko call krenge vo usko bolega ka ki ja bhai agle middleware ko call kr yha se tera kaam khatam
+
+//header -> token 
+    // jwt -> decode using sign "mysecretkey"
+    //userid
+--> how to send tokent jwt from postman or with request in authorization
+--> how to fetch it from authorization
+--> how to decode it 
+
+--> how to apply authorization
+
+//express error route using next 
+
+//Error Handling in ts - extents Error class
+-> adding data to Error class
+-> adding statuscode to Error class 
+
+
+// Express Validator 
+// har chiz ke liye error lagana achha nhi hota hai , isliye jaha possible ho vha kaam chlate hai bina error ke , hamare pas express ki ek library hai Validator jo ki bahut sare errors ko khud handle kr leti hai 
+yarn add express-validator
+
+how to verify password and confirm password 
+how to check strong password
+how to access request in express-validator 
+how to access request.param in express-validator 
+
+//QUIZ 
+
+Controller  - function body 
+model create for quiz 
+authentication , make easy in postman -> environment setup
+
+-> create quize 
+-> get quize 
+-> implementation of quize model 
+-> projection -> how to fiter what to hide what to show
+
+//authorization
+
+//shortcut for postman -> bar bar token dalna pd rha hai , making variable
+
+-> restriction on update and delete of published quiz 
+-> validation over quiz 
+
+
+-> optional variable in params
+-> requestHandler
+
